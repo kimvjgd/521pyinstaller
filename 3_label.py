@@ -60,12 +60,17 @@ def execute_cmd(cmd):
 
 def firmware_update():
     execute_cmd('rm -r /home/orangepi/python/core/521pyinstaller')
+    print('rm 완료')
     execute_cmd('cd /home/orangepi/python/core')
-    execute_cmd('git clone \'https://github.com/kimvjgd/521pyinstaller\'')
+    print('cd 완료')
+    execute_cmd('git clone "https://github.com/kimvjgd/521pyinstaller"')
+    print('git clone 완료')
 
-update_btn = Button(root, text='업데이트222', command= firmware_update)
+update_btn = Button(root, text='업데이트', command= firmware_update)
 update_btn.pack()
 
+ver_label = Label(root, text='ver3')
+ver_label.pack()
 
 
 
