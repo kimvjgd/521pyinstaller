@@ -57,19 +57,30 @@ def execute_cmd(cmd):
     os.system(cmd)
 
 # execute_cmd('rm terminal_cmd.py')
-
+import subprocess
 def firmware_update():
     execute_cmd('rm -r /home/orangepi/python/core/521pyinstaller')
     print('rm 완료')
-    execute_cmd('cd /home/orangepi/python/core')
-    print('cd 완료')
-    execute_cmd('git clone "https://github.com/kimvjgd/521pyinstaller"')
-    print('git clone 완료')
+    
+    repo_url = "https://github.com/kimvjgd/521pyinstaller.git"
+    destination_folder = '/home/orangepi/python/core/521pyinstaller'
+    
+    try:
+        subprocess.check_output(["git", "clone", repo_url, destination_folder], cwd='/tmp')
+        print('Process well done')
+    except subprocess.CalledProcessError as e:
+        print(e)
+    # execute_cmd('cd /home/orangepi/python/core')
+    # print('cd 완료')
+    # execute_cmd('mkdir temp_test')
+    # print('mkdir 완료')
+    # execute_cmd('git clone "https://github.com/kimvjgd/521pyinstaller"')
+    # print('git clone 완료')
 
 update_btn = Button(root, text='업데이트', command= firmware_update)
 update_btn.pack()
 
-ver_label = Label(root, text='ver3')
+ver_label = Label(root, text='ver4')
 ver_label.pack()
 
 
