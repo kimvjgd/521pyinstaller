@@ -80,7 +80,7 @@ def firmware_update():
 update_btn = Button(root, text='업데이트', command= firmware_update)
 update_btn.pack()
 
-ver_label = Label(root, text='ver4')
+ver_label = Label(root, text='ver5 maybe final')
 ver_label.pack()
 
 
