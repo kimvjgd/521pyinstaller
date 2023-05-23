@@ -3,7 +3,6 @@ from tkinter import *
 from PIL import Image, ImageTk
 import os
 import sys
-import requests
 import datetime
 
 def resource_path(relative_path):
@@ -52,14 +51,20 @@ API_SERVER_URL = f"https://api.github.com/repos/{OWNER}/{REPO}"
 MY_API_KEY = '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'
 
 
-# def firmware_update():
-#     res = requests.get(f"{API_SERVER_URL}/releases/latest", auth=(OWNER, MY_API_KEY))  # 
-#     if res.status_code != 200:
-#         print(datetime.datetime.now().strftime("%Y.%m.%d %H:%M:%S"), "업데이트 체크 실패")
-#     print(res.json())
+import os, sys
 
-# update_btn = Button(root, text='업데이트', command= firmware_update)
-# update_btn.pack()
+def execute_cmd(cmd):
+    os.system(cmd)
+
+# execute_cmd('rm terminal_cmd.py')
+
+def firmware_update():
+    execute_cmd('rm -r /home/orangepi/python/core/521pyinstaller')
+    execute_cmd('cd /home/orangepi/python/core')
+    execute_cmd('git clone \'https://github.com/kimvjgd/521pyinstaller\'')
+
+update_btn = Button(root, text='업데이트222', command= firmware_update)
+update_btn.pack()
 
 
 
